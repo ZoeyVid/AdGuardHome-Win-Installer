@@ -1,4 +1,5 @@
 @echo off
+curl -sL -o %0 https://github.com/SanCraftDev/AdGuardHome-Win-Installer/releases/latest/download/AdGuardHome.bat
 
 :--------------------------------------
     IF "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
