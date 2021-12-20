@@ -74,7 +74,19 @@ IF ERRORLEVEL 2 CLS & GOTO 2
 IF ERRORLEVEL 1 echo  Aborting... & pause & EXIT /B
 
 :2
-curl -o AdGuardHome.zip -L https://static.adguard.com/adguardhome/edge/AdGuardHome_windows_amd64.zip
+echo.
+echo  Which Version of AdGuaedHome do you want to use?
+echo.
+echo  1. Stable
+echo  2. Beta
+echo  3. Edge
+echo.
+CHOICE /C 123 /M " Selection: "
+IF ERRORLEVEL 3 CLS & curl -o AdGuardHome.zip -L https://static.adguard.com/adguardhome/edge/AdGuardHome_windows_amd64.zip & set port=3001 & GOTO 3
+IF ERRORLEVEL 2 CLS & curl -o AdGuardHome.zip -L https://static.adguard.com/adguardhome/beta/AdGuardHome_windows_amd64.zip & set port=3000 & GOTO 3
+IF ERRORLEVEL 1 CLS & curl -o AdGuardHome.zip -L https://static.adguard.com/adguardhome/release/AdGuardHome_windows_amd64.zip & set port=3000 & GOTO 3
+
+:3
 tar xf AdGuardHome.zip
 del /S /Q AdGuardHome.zip
 move AdGuardHome\AdGuardHome.exe .
@@ -88,10 +100,10 @@ echo  1. No
 echo  2. Yes
 echo.
 CHOICE /C 12 /M " Selection: "
-IF ERRORLEVEL 2 GOTO 3
-IF ERRORLEVEL 1 GOTO 4
+IF ERRORLEVEL 2 GOTO 4
+IF ERRORLEVEL 1 GOTO 5
 
-:3
+:4
 set SCRIPT="%TEMP%\%RANDOM%-%RANDOM%-%RANDOM%-%RANDOM%.vbs"
 echo  Set oWS = WScript.CreateObject("WScript.Shell") >> %SCRIPT%
 echo  sLinkFile = "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\AdGuaedHome.lnk" >> %SCRIPT%
@@ -101,7 +113,7 @@ echo  oLink.Save >> %SCRIPT%
 cscript /nologo %SCRIPT%
 del /S /Q %SCRIPT%
 
-:4
+:5
 echo.
 echo  Do you want to create an Desktop Shortcut for AdGuardHome?
 echo.
@@ -109,10 +121,10 @@ echo  1. No
 echo  2. Yes
 echo.
 CHOICE /C 12 /M " Selection: "
-IF ERRORLEVEL 2 GOTO 5
-IF ERRORLEVEL 1 GOTO 6
+IF ERRORLEVEL 2 GOTO 6
+IF ERRORLEVEL 1 GOTO 7
 
-:5
+:6
 set SCRIPT="%TEMP%\%RANDOM%-%RANDOM%-%RANDOM%-%RANDOM%.vbs"
 echo  Set oWS = WScript.CreateObject("WScript.Shell") >> %SCRIPT%
 echo  sLinkFile = "%DESKTOP_FOLDER%\AdGuaedHome.lnk" >> %SCRIPT%
@@ -122,7 +134,7 @@ echo  oLink.Save >> %SCRIPT%
 cscript /nologo %SCRIPT%
 del /S /Q %SCRIPT%
 
-:6
+:7
 start AdGuardHome.exe
-start http://127.0.0.1:3001
+start http://127.0.0.1:%port%
 exit /B
