@@ -64,6 +64,7 @@ IF ERRORLEVEL 2 CLS & GOTO 1
 IF ERRORLEVEL 1 echo  Aborting... & pause & EXIT /B
 
 :1
+if not exist AdGuardHome.exe (
 echo.
 echo  Do you want to install AdGuardHome in the Current Directory?
 echo.
@@ -73,6 +74,28 @@ echo.
 CHOICE /C 12 /M " Selection: "
 IF ERRORLEVEL 2 CLS & GOTO 2
 IF ERRORLEVEL 1 echo  Aborting... & pause & EXIT /B
+) else (
+echo.
+echo  Do you want to update or remove AdGuardHome in the Current Directory?
+echo.
+echo  1. Update
+echo  2. Remove
+echo  3. Abort
+echo.
+CHOICE /C 123 /M " Selection: "
+IF ERRORLEVEL 3 echo  Aborting... & pause & EXIT /B
+IF ERRORLEVEL 2 CLS & GOTO rm
+IF ERRORLEVEL 1 CLS & GOTO 2
+)
+
+:rm
+rmdir /S /Q data
+del /S /Q "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\AdGuaedHome.lnk"
+del /S /Q "%DESKTOP_FOLDER%\AdGuaedHome.lnk"
+del /S /Q "AdGuardHome.exe"
+del /S /Q "AdGuaedHome.bat"
+del /S /Q %0
+exit /B
 
 :2
 echo.
