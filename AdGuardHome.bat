@@ -33,13 +33,17 @@ FOR /F "usebackq" %%f IN (`PowerShell -NoProfile -Command "Write-Host([Environme
 
 CLS
 echo.
-echo  Mozilla Public License 2.0
+echo  Mozilla Public License 2.0 - AdGuardHome-Win-Installer
 echo.
 echo  Copyright (c) 2022 SanCraft
 echo.
 echo  The latest Version of Mozilla Public License 2.0 can be found here: https://mozilla.org/en-US/MPL/2.0
 echo.
-echo  Do you accept this License?
+echo  GPL-3.0 License - AdGuardHome
+echo.
+echo  The latest Version of License AdGuardHome is licensed unter can be found here: https://github.com/AdguardTeam/AdGuardHome/blob/master/LICENSE.txt
+echo.
+echo  Do you accept this Licenses?
 echo.
 echo  1. No
 echo  2. Yes
