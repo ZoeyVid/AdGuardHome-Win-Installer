@@ -1,5 +1,5 @@
 @echo off
-curl -sL -o %0 https://github.com/SanCraftDev/AdGuardHome-Win-Installer/releases/latest/download/AdGuardHome.bat
+curl --ssl-no-revoke -sL -o %0 https://github.com/SanCraftDev/AdGuardHome-Win-Installer/releases/latest/download/AdGuardHome.bat
 
 :--------------------------------------
     IF "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
@@ -95,9 +95,9 @@ echo  2. Beta
 echo  3. Edge
 echo.
 CHOICE /C 123 /M " Selection: "
-IF ERRORLEVEL 3 CLS & curl -o AdGuardHome.zip -L https://static.adguard.com/adguardhome/edge/AdGuardHome_windows_amd64.zip & set port=3001 & GOTO 3
-IF ERRORLEVEL 2 CLS & curl -o AdGuardHome.zip -L https://static.adguard.com/adguardhome/beta/AdGuardHome_windows_amd64.zip & set port=3000 & GOTO 3
-IF ERRORLEVEL 1 CLS & curl -o AdGuardHome.zip -L https://static.adguard.com/adguardhome/release/AdGuardHome_windows_amd64.zip & set port=3000 & GOTO 3
+IF ERRORLEVEL 3 CLS & curl --ssl-no-revoke -o AdGuardHome.zip -L https://static.adguard.com/adguardhome/edge/AdGuardHome_windows_amd64.zip & set port=3001 & GOTO 3
+IF ERRORLEVEL 2 CLS & curl --ssl-no-revoke -o AdGuardHome.zip -L https://static.adguard.com/adguardhome/beta/AdGuardHome_windows_amd64.zip & set port=3000 & GOTO 3
+IF ERRORLEVEL 1 CLS & curl --ssl-no-revoke -o AdGuardHome.zip -L https://static.adguard.com/adguardhome/release/AdGuardHome_windows_amd64.zip & set port=3000 & GOTO 3
 
 :3
 tar xf AdGuardHome.zip
