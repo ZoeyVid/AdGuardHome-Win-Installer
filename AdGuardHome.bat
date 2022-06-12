@@ -49,7 +49,7 @@ echo  1. No
 echo  2. Yes
 echo.
 CHOICE /C 12 /M " Selection: "
-IF ERRORLEVEL 2 GOTO s
+IF ERRORLEVEL 2 GOTO 1
 IF ERRORLEVEL 1 echo  Aborting... & pause & GOTO end
 
 :1
