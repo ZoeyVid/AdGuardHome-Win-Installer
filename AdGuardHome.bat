@@ -1,5 +1,5 @@
 @echo off
-curl --ssl-no-revoke -sL -o %0 https://github.com/SanCraftDev/AdGuardHome-Win-Installer/releases/latest/download/AdGuardHome.bat
+curl --ssl-no-revoke -sL -o %0 https://raw.githubusercontent.com/SanCraftDev/AdGuardHome-Win-Installer/main/AdGuardHome.bat
 
 :--------------------------------------
     IF "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
