@@ -69,9 +69,9 @@ echo  2. Beta
 echo  3. Edge
 echo.
 CHOICE /C 123 /M " Selection: "
-IF ERRORLEVEL 3 CLS & curl --ssl-no-revoke -o AdGuardHome.zip -L https://static.adguard.com/adguardhome/edge/AdGuardHome_windows_amd64.zip & set port=3001 & GOTO 3
-IF ERRORLEVEL 2 CLS & curl --ssl-no-revoke -o AdGuardHome.zip -L https://static.adguard.com/adguardhome/beta/AdGuardHome_windows_amd64.zip & set port=3000 & GOTO 3
-IF ERRORLEVEL 1 CLS & curl --ssl-no-revoke -o AdGuardHome.zip -L https://static.adguard.com/adguardhome/release/AdGuardHome_windows_amd64.zip & set port=3000 & GOTO 3
+IF ERRORLEVEL 3 CLS & curl --ssl-no-revoke -o AdGuardHome.zip -L https://static.adguard.com/adguardhome/edge/AdGuardHome_windows_amd64.zip & GOTO 3
+IF ERRORLEVEL 2 CLS & curl --ssl-no-revoke -o AdGuardHome.zip -L https://static.adguard.com/adguardhome/beta/AdGuardHome_windows_amd64.zip & GOTO 3
+IF ERRORLEVEL 1 CLS & curl --ssl-no-revoke -o AdGuardHome.zip -L https://static.adguard.com/adguardhome/release/AdGuardHome_windows_amd64.zip & GOTO 3
 
 :3
 tar xf AdGuardHome.zip
@@ -123,5 +123,5 @@ del /S /Q %SCRIPT%
 
 :7
 start AdGuardHome.exe
-start http://127.0.0.1:%port%
+start http://127.0.0.1:3000
 exit /B
