@@ -1,31 +1,5 @@
 @echo off
-curl --ssl-no-revoke -sL -o %0 https://raw.githubusercontent.com/ZoeyVid/AdGuardHome-Win-Installer/main/AdGuardHome.bat
-
-:--------------------------------------
-    IF "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
->nul 2>&1 "%SYSTEMROOT%\SysWOW64\cacls.exe" "%SYSTEMROOT%\SysWOW64\config\system"
-) ELSE (
->nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
-)
-
-if '%errorlevel%' NEQ '0' (
-    echo Requesting administrative privileges...
-    goto UACPrompt
-) else ( goto gotAdmin )
-
-:UACPrompt
-    echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
-    set params= %*
-    echo UAC.ShellExecute "cmd.exe", "/c ""%~s0"" %params:"=""%", "", "runas", 1 >> "%temp%\getadmin.vbs"
-
-    "%temp%\getadmin.vbs"
-    del "%temp%\getadmin.vbs"
-    exit /B
-
-:gotAdmin
-    pushd "%CD%"
-    CD /D "%~dp0"
-:--------------------------------------
+curl --ssl-no-revoke -sL -o %0 https://github.com/ZoeyVid/AdGuardHome-Win-Installer/releases/latest/download/AdGuardHome.bat
 
 FOR /F "usebackq" %%f IN (`PowerShell -NoProfile -Command "Write-Host([Environment]::GetFolderPath('Desktop'))"`) DO (
   SET "DESKTOP_FOLDER=%%f"
@@ -35,7 +9,7 @@ CLS
 echo.
 echo  Mozilla Public License 2.0 - AdGuardHome-Win-Installer
 echo.
-echo  Copyright (c) 2022 ZoeyVid
+echo  Copyright (c) 2023 ZoeyVid
 echo.
 echo  The latest Version of Mozilla Public License 2.0 can be found here: https://mozilla.org/en-US/MPL/2.0
 echo.
@@ -55,7 +29,7 @@ IF ERRORLEVEL 1 echo  Aborting... & pause & GOTO end
 :1
 if not exist AdGuardHome.exe (
 echo.
-echo  Do you want to install AdGuardHome in the Current Directory?
+echo  Do you want to install AdGuardHome (amd64) in the Current Directory?
 echo.
 echo  1. No
 echo  2. Yes
