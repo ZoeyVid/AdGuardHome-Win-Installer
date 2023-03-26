@@ -7,13 +7,13 @@ FOR /F "usebackq" %%f IN (`PowerShell -NoProfile -Command "Write-Host([Environme
 
 CLS
 echo.
-echo  Mozilla Public License 2.0 - AdGuardHome-Win-Installer
+echo  Mozilla Public License 2.0 - AdGuardHome-Win-Installer-amd64
 echo.
 echo  Copyright (c) 2023 ZoeyVid
 echo.
 echo  The latest Version of Mozilla Public License 2.0 can be found here: https://mozilla.org/en-US/MPL/2.0
 echo.
-echo  GPL-3.0 License - AdGuardHome
+echo  GPL-3.0 License - AdGuardHome - amd64
 echo.
 echo  The latest Version of License AdGuardHome is licensed unter can be found here: https://github.com/AdguardTeam/AdGuardHome/blob/master/LICENSE.txt
 echo.
@@ -29,7 +29,7 @@ IF ERRORLEVEL 1 echo  Aborting... & pause & GOTO end
 :1
 if not exist AdGuardHome.exe (
 echo.
-echo  Do you want to install AdGuardHome (amd64) into the Current Directory?
+echo  Do you want to install AdGuardHome in the Current Directory?
 echo.
 echo  1. No
 echo  2. Yes
@@ -39,7 +39,7 @@ IF ERRORLEVEL 2 CLS & GOTO 2
 IF ERRORLEVEL 1 echo  Aborting... & pause & EXIT /B
 ) else (
 echo.
-echo  Do you want to update or remove AdGuardHome into the Current Directory?
+echo  Do you want to update or remove AdGuardHome in the Current Directory?
 echo.
 echo  1. Update
 echo  2. Remove
