@@ -13,7 +13,7 @@ echo  You can find the License here: https://github.com/ZoeyVid/AdGuardHome-Win-
 echo.
 echo  GNU General Public License v3.0  - AdGuardHome
 echo.
-echo  The latest Version of License AdGuardHome is licensed unter can be found here: https://github.com/AdguardTeam/AdGuardHome/blob/master/LICENSE.txt
+echo  The latest Version of License AdGuardHome is licensed under can be found here: https://github.com/AdguardTeam/AdGuardHome/blob/master/LICENSE.txt
 echo.
 echo  Do you accept this Licenses?
 echo.
