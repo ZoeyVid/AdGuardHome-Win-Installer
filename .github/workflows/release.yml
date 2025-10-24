@@ -12,7 +12,7 @@ jobs:
       - name: Read .version file
         id: version
         run: echo "version=$(cat .github/.version)" >> $GITHUB_OUTPUT
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: artifacts
           path: AdGuardHome.bat
